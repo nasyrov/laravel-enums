@@ -15,7 +15,7 @@ abstract class TestCase extends BaseTestCase
     protected function getPackageProviders($app)
     {
         return [
-            ImgixServiceProvider::class,
+            EnumServiceProvider::class,
         ];
     }
 }
