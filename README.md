@@ -26,6 +26,56 @@ $ composer require nasyrov/laravel-enum
 
 ## Usage
 
+Declare the enum:
+
+``` php
+use Nasyrov\Laravel\Enum\Enum;
+
+/**
+ * @method static UserStatusEnum ACTIVE()
+ * @method static UserStatusEnum INACTIVE()
+ */
+class UserStatusEnum extends Enum
+{
+    const ACTIVE = 10;
+    const INACTIVE = 20;
+}
+```
+
+To call the enum simply new up the enum class or use the static methods:
+
+``` php
+$status = new UserStatusEnum(UserStatusEnum::ACTIVE);
+$status = UserStatusEnum::ACTIVE();
+```
+
+Define and type-hint the model accessor:
+
+``` php
+public function getStatusAttribute($attribute) {
+    return new UserStatusEnum($attribute);
+}
+```
+
+Define and type-hint the model mutator:
+
+``` php
+public function setStatusAttribute(UserStatusEnum $attribute) {
+    $this->attributes['status'] = $attribute->getValue();
+}
+```
+
+Validation:
+
+``` php
+$this->validate($request, [
+    'status' => [
+        'required',
+        Rule::in(UserStatusEnum::values()),
+    ],
+]);
+```
+
 ## Testing
 
 ``` bash
