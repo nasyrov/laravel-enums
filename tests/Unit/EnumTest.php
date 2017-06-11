@@ -29,4 +29,16 @@ class EnumTest extends TestCase
         );
     }
 
+    /** @test */
+    public function it_gets_enum_key()
+    {
+        $this->assertEquals(
+            'FOO',
+            (new EnumStub(EnumStub::FOO))->getKey()
+        );
+        $this->assertEquals(
+            'BAR',
+            (new EnumStub(EnumStub::BAR))->getKey()
+        );
+    }
 }

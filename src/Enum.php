@@ -48,6 +48,16 @@ abstract class Enum
     }
 
     /**
+     * Get the enum key.
+     *
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return static::constants()->search($this->value, true);
+    }
+
+    /**
      * Get the enum constants.
      *
      * @return \Illuminate\Support\Collection
