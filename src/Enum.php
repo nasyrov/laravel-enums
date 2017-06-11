@@ -40,6 +40,14 @@ abstract class Enum
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string)$this->value;
+    }
+
+    /**
      * Get the enum constants.
      *
      * @return \Illuminate\Support\Collection
