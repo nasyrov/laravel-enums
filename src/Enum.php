@@ -58,6 +58,17 @@ abstract class Enum
     }
 
     /**
+     * Get the enum value.
+     *
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+
+    /**
      * Get the enum constants.
      *
      * @return \Illuminate\Support\Collection
