@@ -2,6 +2,7 @@
 
 namespace Nasyrov\Laravel\Enum\Tests\Unit;
 
+use BadMethodCallException;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
