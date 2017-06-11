@@ -56,6 +56,18 @@ class EnumTest extends TestCase
     }
 
     /** @test */
+    public function it_gets_offer_enum_values()
+    {
+        $this->assertEquals(
+            [
+                'FOO' => new EnumStub(EnumStub::FOO),
+                'BAR' => new EnumStub(EnumStub::BAR),
+            ],
+            EnumStub::values()
+        );
+    }
+
+    /** @test */
     public function it_gets_enum_keys()
     {
         $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());

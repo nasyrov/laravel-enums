@@ -80,6 +80,20 @@ abstract class Enum
     }
 
     /**
+     * Get the enum values.
+     *
+     * @return array
+     */
+    public static function values()
+    {
+        return static::constants()
+            ->map(function ($value) {
+                return new static($value);
+            })
+            ->all();
+    }
+
+    /**
      * Get the enum constants.
      *
      * @return \Illuminate\Support\Collection
