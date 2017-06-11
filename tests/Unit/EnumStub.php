@@ -2,7 +2,9 @@
 
 namespace Nasyrov\Laravel\Enum\Tests\Unit;
 
-class EnumStub
+use Nasyrov\Laravel\Enum\Enum;
+
+class EnumStub extends Enum
 {
 
 }
