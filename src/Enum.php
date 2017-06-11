@@ -67,6 +67,17 @@ abstract class Enum
         return $this->value;
     }
 
+    /**
+     * Get the enum keys.
+     *
+     * @return array
+     */
+    public static function keys()
+    {
+        return static::constants()
+            ->keys()
+            ->all();
+    }
 
     /**
      * Get the enum constants.

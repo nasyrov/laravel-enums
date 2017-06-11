@@ -54,4 +54,10 @@ class EnumTest extends TestCase
             (new EnumStub(EnumStub::BAR))->getValue()
         );
     }
+
+    /** @test */
+    public function it_gets_enum_keys()
+    {
+        $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());
+    }
 }
