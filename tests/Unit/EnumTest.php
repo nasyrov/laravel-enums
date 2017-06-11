@@ -2,6 +2,7 @@
 
 namespace Nasyrov\Laravel\Enum\Tests\Unit;
 
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
 
@@ -71,5 +72,33 @@ class EnumTest extends TestCase
     public function it_gets_enum_keys()
     {
         $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());
+    }
+
+    /** @test */
+    public function it_gets_offer_enum_constants()
+    {
+        $this->assertInstanceOf(Collection::class, EnumStub::constants());
+        $this->assertEquals(
+            [
+                'FOO' => 'test',
+                'BAR' => 123,
+            ],
+            EnumStub::constants()->all()
+        );
+    }
+
+    /** @test */
+    public function it_provides_static_access()
+    {
+        $this->assertEquals(new EnumStub(EnumStub::FOO), EnumStub::FOO());
+        $this->assertEquals(new EnumStub(EnumStub::BAR), EnumStub::BAR());
+    }
+
+    /** @test */
+    public function it_cannot_provides_static_access_for_invalid_value()
+    {
+        $this->expectException(BadMethodCallException::class);
+
+        EnumStub::BAZ();
     }
 }

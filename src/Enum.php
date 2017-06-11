@@ -2,6 +2,7 @@
 
 namespace Nasyrov\Laravel\Enum;
 
+use BadMethodCallException;
 use ReflectionClass;
 use UnexpectedValueException;
 
@@ -107,5 +108,26 @@ abstract class Enum
         }
 
         return static::$constants[static::class];
+    }
+
+    /**
+     * Returns a new enum instance when called statically.
+     *
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return static
+     */
+    public static function __callStatic($name, array $arguments)
+    {
+        if (static::constants()->has($name)) {
+            return new static(static::constants()->get($name));
+        }
+
+        throw new BadMethodCallException(sprintf(
+            'No static method or enum constant `%s` in class %s',
+            $name,
+            static::class
+        ));
     }
 }
