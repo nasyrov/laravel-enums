@@ -18,7 +18,7 @@ Make sure all dependencies have been installed before moving on:
 
 ## Install
 
-First, pull the package via Composer:
+Via Composer:
 
 ``` bash
 $ composer require nasyrov/laravel-enum
@@ -42,7 +42,7 @@ class UserStatusEnum extends Enum
 }
 ```
 
-To call the enum simply new up the enum class or use the static methods:
+To use the enum new up the instance or simply call via the static methods:
 
 ``` php
 $status = new UserStatusEnum(UserStatusEnum::ACTIVE);
@@ -74,6 +74,41 @@ $this->validate($request, [
         Rule::in(UserStatusEnum::values()),
     ],
 ]);
+```
+
+Localization:
+
+``` php
+use Nasyrov\Laravel\Enum\Enum as BaseEnum;
+
+abstract class Enum extends BaseEnum
+{
+    /**
+     * Get the enum labels.
+     *
+     * @return array
+     */
+    public static function labels()
+    {
+        return static::constants()
+            ->flip()
+            ->map(function ($key) {
+                // Place your translation strings in `resources/lang/en/enum.php`
+                return trans(sprintf('enum.%s', strtolower($key)));
+            })
+            ->all();
+    }
+}
+```
+
+``` blade
+<select name="status">
+    @foreach (UserStatusEnum::labels() as $value => $label)
+        <option value="{{ $value }}">
+            {{ $label }}
+        </option>
+    @endforeach
+</select>
 ```
 
 ## Testing
