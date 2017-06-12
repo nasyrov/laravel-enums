@@ -2,7 +2,9 @@
 
 namespace Nasyrov\Laravel\Enum\Console;
 
-class EnumMakeCommand
+use Illuminate\Console\GeneratorCommand;
+
+class EnumMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
