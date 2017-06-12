@@ -29,7 +29,7 @@ Register the service provider in `config/app.php`:
 ``` php
 'providers' => [
     ...
-    Nasyrov\Laravel\Imgix\ImgixServiceProvider::class,
+    Nasyrov\Laravel\Enum\EnumServiceProvider::class,
     ...
 ]
 ```
