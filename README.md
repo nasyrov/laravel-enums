@@ -18,19 +18,33 @@ Make sure all dependencies have been installed before moving on:
 
 ## Install
 
-Via Composer:
+Pull the package via Composer:
 
 ``` bash
 $ composer require nasyrov/laravel-enum
 ```
 
-## Usage
-
-Declare the enum:
+Register the service provider in `config/app.php`:
 
 ``` php
-use Nasyrov\Laravel\Enum\Enum;
+'providers' => [
+    ...
+    Nasyrov\Laravel\Enum\EnumServiceProvider::class,
+    ...
+]
+```
 
+## Usage
+
+Generate a new enum class via the command:
+
+``` bash
+$ php artisan make:enum UserStatusEnum
+```
+
+Define the enum constants:
+
+``` php
 /**
  * @method static UserStatusEnum ACTIVE()
  * @method static UserStatusEnum INACTIVE()
@@ -49,7 +63,7 @@ $status = new UserStatusEnum(UserStatusEnum::ACTIVE);
 $status = UserStatusEnum::ACTIVE();
 ```
 
-Define and type-hint the model accessor:
+Type-hint the model accessor:
 
 ``` php
 public function getStatusAttribute($attribute) {
@@ -57,7 +71,7 @@ public function getStatusAttribute($attribute) {
 }
 ```
 
-Define and type-hint the model mutator:
+Type-hint the model mutator:
 
 ``` php
 public function setStatusAttribute(UserStatusEnum $attribute) {

@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use Nasyrov\Laravel\Enum\Enum;
+
+class DummyClass extends Enum
+{
+    // constants
+}

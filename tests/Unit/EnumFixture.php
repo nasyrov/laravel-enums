@@ -5,10 +5,10 @@ namespace Nasyrov\Laravel\Enum\Tests\Unit;
 use Nasyrov\Laravel\Enum\Enum;
 
 /**
- * @method static EnumStub FOO()
- * @method static EnumStub BAR()
+ * @method static EnumFixture FOO()
+ * @method static EnumFixture BAR()
  */
-class EnumStub extends Enum
+class EnumFixture extends Enum
 {
     const FOO = 'test';
     const BAR = 123;

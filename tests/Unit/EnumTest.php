@@ -14,20 +14,20 @@ class EnumTest extends TestCase
     {
         $this->expectException(UnexpectedValueException::class);
 
-        new EnumStub('test');
-        new EnumStub(1234);
+        new EnumFixture('test');
+        new EnumFixture(1234);
     }
 
     /** @test */
     public function it_converts_enum_value_to_string()
     {
         $this->assertEquals(
-            EnumStub::FOO,
-            (string)new EnumStub(EnumStub::FOO)
+            EnumFixture::FOO,
+            (string)new EnumFixture(EnumFixture::FOO)
         );
         $this->assertEquals(
-            EnumStub::BAR,
-            (string)new EnumStub(EnumStub::BAR)
+            EnumFixture::BAR,
+            (string)new EnumFixture(EnumFixture::BAR)
         );
     }
 
@@ -36,11 +36,11 @@ class EnumTest extends TestCase
     {
         $this->assertEquals(
             'FOO',
-            (new EnumStub(EnumStub::FOO))->getKey()
+            (new EnumFixture(EnumFixture::FOO))->getKey()
         );
         $this->assertEquals(
             'BAR',
-            (new EnumStub(EnumStub::BAR))->getKey()
+            (new EnumFixture(EnumFixture::BAR))->getKey()
         );
     }
 
@@ -48,19 +48,19 @@ class EnumTest extends TestCase
     public function it_gets_enum_value()
     {
         $this->assertEquals(
-            EnumStub::FOO,
-            (new EnumStub(EnumStub::FOO))->getValue()
+            EnumFixture::FOO,
+            (new EnumFixture(EnumFixture::FOO))->getValue()
         );
         $this->assertEquals(
-            EnumStub::BAR,
-            (new EnumStub(EnumStub::BAR))->getValue()
+            EnumFixture::BAR,
+            (new EnumFixture(EnumFixture::BAR))->getValue()
         );
     }
 
     /** @test */
     public function it_gets_enum_keys()
     {
-        $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());
+        $this->assertEquals(['FOO', 'BAR'], EnumFixture::keys());
     }
 
     /** @test */
@@ -68,31 +68,31 @@ class EnumTest extends TestCase
     {
         $this->assertEquals(
             [
-                'FOO' => new EnumStub(EnumStub::FOO),
-                'BAR' => new EnumStub(EnumStub::BAR),
+                'FOO' => new EnumFixture(EnumFixture::FOO),
+                'BAR' => new EnumFixture(EnumFixture::BAR),
             ],
-            EnumStub::values()
+            EnumFixture::values()
         );
     }
 
     /** @test */
     public function it_gets_enum_constants()
     {
-        $this->assertInstanceOf(Collection::class, EnumStub::constants());
+        $this->assertInstanceOf(Collection::class, EnumFixture::constants());
         $this->assertEquals(
             [
                 'FOO' => 'test',
                 'BAR' => 123,
             ],
-            EnumStub::constants()->all()
+            EnumFixture::constants()->all()
         );
     }
 
     /** @test */
     public function it_provides_static_access()
     {
-        $this->assertEquals(new EnumStub(EnumStub::FOO), EnumStub::FOO());
-        $this->assertEquals(new EnumStub(EnumStub::BAR), EnumStub::BAR());
+        $this->assertEquals(new EnumFixture(EnumFixture::FOO), EnumFixture::FOO());
+        $this->assertEquals(new EnumFixture(EnumFixture::BAR), EnumFixture::BAR());
     }
 
     /** @test */
@@ -100,6 +100,6 @@ class EnumTest extends TestCase
     {
         $this->expectException(BadMethodCallException::class);
 
-        EnumStub::BAZ();
+        EnumFixture::BAZ();
     }
 }
