@@ -58,7 +58,13 @@ class EnumTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_offer_enum_values()
+    public function it_gets_enum_keys()
+    {
+        $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());
+    }
+
+    /** @test */
+    public function it_gets_enum_values()
     {
         $this->assertEquals(
             [
@@ -70,13 +76,7 @@ class EnumTest extends TestCase
     }
 
     /** @test */
-    public function it_gets_enum_keys()
-    {
-        $this->assertEquals(['FOO', 'BAR'], EnumStub::keys());
-    }
-
-    /** @test */
-    public function it_gets_offer_enum_constants()
+    public function it_gets_enum_constants()
     {
         $this->assertInstanceOf(Collection::class, EnumStub::constants());
         $this->assertEquals(
