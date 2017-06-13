@@ -1,9 +1,9 @@
 <?php
 
-namespace Nasyrov\Laravel\Enum\Console;
+namespace Nasyrov\Laravel\Enums\Console;
 
 use Illuminate\Support\Facades\Artisan;
-use Nasyrov\Laravel\Enum\Tests\Integration\TestCase;
+use Nasyrov\Laravel\Enums\Tests\Integration\TestCase;
 
 class EnumMakeCommandTest extends TestCase
 {

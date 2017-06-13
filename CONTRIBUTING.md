@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/nasyrov/laravel-imgix).
+We accept contributions via Pull Requests on [Github](https://github.com/nasyrov/laravel-enum).
 
 ## Pull Requests
 
@@ -23,6 +23,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/nasyrov
 ## Running Tests
 
 ``` bash
+$ composer lint
 $ composer test
 ```
 

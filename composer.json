@@ -1,12 +1,12 @@
 {
-    "name": "nasyrov/laravel-enum",
+    "name": "nasyrov/laravel-enums",
     "type": "library",
     "description": "Laravel package for Enum implementation.",
     "keywords": [
         "laravel",
         "enum"
     ],
-    "homepage": "https://github.com/nasyrov/laravel-enum",
+    "homepage": "https://github.com/nasyrov/laravel-enums",
     "license": "MIT",
     "authors": [
         {
@@ -28,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nasyrov\\Laravel\\Enum\\": "src"
+            "Nasyrov\\Laravel\\Enums\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nasyrov\\Laravel\\Enum\\Tests\\": "tests"
+            "Nasyrov\\Laravel\\Enums\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -43,7 +43,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Nasyrov\\Laravel\\Enum\\EnumServiceProvider"
+                "Nasyrov\\Laravel\\Enums\\EnumServiceProvider"
             ]
         }
     },
