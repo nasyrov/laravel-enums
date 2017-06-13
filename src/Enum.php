@@ -1,6 +1,6 @@
 <?php
 
-namespace Nasyrov\Laravel\Enum;
+namespace Nasyrov\Laravel\Enums;
 
 use BadMethodCallException;
 use ReflectionClass;
