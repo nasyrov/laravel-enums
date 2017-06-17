@@ -29,7 +29,7 @@ abstract class Enum
      */
     public function __construct($value)
     {
-        if (!static::constants()->containsStrict($value)) {
+        if (!static::constants()->contains($value)) {
             throw new UnexpectedValueException(sprintf(
                 'Value `%s` is not part of the enum %s',
                 $value,
