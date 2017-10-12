@@ -13,7 +13,7 @@ Laravel package for Enum implementation.
 
 Make sure all dependencies have been installed before moving on:
 
-* [PHP](http://php.net/manual/en/install.php) >= 5.6
+* [PHP](http://php.net/manual/en/install.php) >= 7.0
 * [Composer](https://getcomposer.org/download/)
 
 ## Install
