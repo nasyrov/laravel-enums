@@ -124,6 +124,17 @@ abstract class Enum extends BaseEnum
     @endforeach
 </select>
 ```
+Validation Rule:
+
+``` php
+use Nasyrov\Laravel\Enums\Rules\EnumRule;
+
+$validator = Validator::make($request->all(), [
+    'enum' => new EnumRule(UserStatusEnum::class),
+]);
+```
+
+
 
 ## Testing
 
