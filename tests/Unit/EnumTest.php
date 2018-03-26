@@ -102,4 +102,11 @@ class EnumTest extends TestCase
 
         EnumFixture::BAZ();
     }
+
+    /** @test */
+    public function it_encodes_to_json()
+    {
+        $this->assertEquals(123, json_encode(new EnumFixture(123)));
+        $this->assertEquals('"test"', json_encode(new EnumFixture('test')));
+    }
 }

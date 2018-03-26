@@ -5,8 +5,9 @@ namespace Nasyrov\Laravel\Enums;
 use BadMethodCallException;
 use ReflectionClass;
 use UnexpectedValueException;
+use JsonSerializable;
 
-abstract class Enum
+abstract class Enum implements JsonSerializable
 {
     /**
      * The enum value.
@@ -46,6 +47,16 @@ abstract class Enum
     public function __toString()
     {
         return (string)$this->value;
+    }
+
+    /**
+     * Serialize enum value
+     *
+     * @return mixed
+     */
+    public function jsonSerialize()
+    {
+        return $this->value;
     }
 
     /**
