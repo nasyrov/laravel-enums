@@ -32,6 +32,13 @@ class EnumTest extends TestCase
     }
 
     /** @test */
+    public function it_gets_serialized_value()
+    {
+        $this->assertEquals(123, json_encode(new EnumFixture(123)));
+        $this->assertEquals('"test"', json_encode(new EnumFixture('test')));
+    }
+
+    /** @test */
     public function it_gets_enum_key()
     {
         $this->assertEquals(
