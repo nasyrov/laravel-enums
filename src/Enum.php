@@ -50,7 +50,7 @@ abstract class Enum implements JsonSerializable
     }
 
     /**
-     * Serialize enum value
+     * Get the serialized value.
      *
      * @return mixed
      */
