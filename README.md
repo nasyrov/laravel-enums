@@ -79,7 +79,7 @@ public function setStatusAttribute(UserStatusEnum $attribute) {
 }
 ```
 
-Validation:
+Basic Validation:
 
 ``` php
 $this->validate($request, [
@@ -87,6 +87,16 @@ $this->validate($request, [
         'required',
         Rule::in(UserStatusEnum::values()),
     ],
+]);
+```
+
+Validation Rule:
+
+``` php
+use Nasyrov\Laravel\Enums\Rules\EnumRule;
+
+$validator = Validator::make($request->all(), [
+    'enum' => new EnumRule(UserStatusEnum::class),
 ]);
 ```
 
