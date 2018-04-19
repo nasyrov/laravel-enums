@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Laravel Imgix Test Suite">
+        <testsuite name="Laravel Enums Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

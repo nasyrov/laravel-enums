@@ -1,4 +1,4 @@
-# Laravel Enum
+# Laravel Enums
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
@@ -13,24 +13,38 @@ Laravel package for Enum implementation.
 
 Make sure all dependencies have been installed before moving on:
 
-* [PHP](http://php.net/manual/en/install.php) >= 5.6
+* [PHP](http://php.net/manual/en/install.php) >= 7.0
 * [Composer](https://getcomposer.org/download/)
 
 ## Install
 
-First, pull the package via Composer:
+Pull the package via Composer:
 
 ``` bash
-$ composer require nasyrov/laravel-enum
+$ composer require nasyrov/laravel-enums
+```
+
+Register the service provider in `config/app.php`:
+
+``` php
+'providers' => [
+    ...
+    Nasyrov\Laravel\Enums\EnumServiceProvider::class,
+    ...
+]
 ```
 
 ## Usage
 
-Declare the enum:
+Generate a new enum class via the command:
+
+``` bash
+$ php artisan make:enum UserStatusEnum
+```
+
+Define the enum constants:
 
 ``` php
-use Nasyrov\Laravel\Enum\Enum;
-
 /**
  * @method static UserStatusEnum ACTIVE()
  * @method static UserStatusEnum INACTIVE()
@@ -42,14 +56,14 @@ class UserStatusEnum extends Enum
 }
 ```
 
-To call the enum simply new up the enum class or use the static methods:
+To use the enum new up the instance or simply call via the static methods:
 
 ``` php
 $status = new UserStatusEnum(UserStatusEnum::ACTIVE);
 $status = UserStatusEnum::ACTIVE();
 ```
 
-Define and type-hint the model accessor:
+Type-hint the model accessor:
 
 ``` php
 public function getStatusAttribute($attribute) {
@@ -57,7 +71,7 @@ public function getStatusAttribute($attribute) {
 }
 ```
 
-Define and type-hint the model mutator:
+Type-hint the model mutator:
 
 ``` php
 public function setStatusAttribute(UserStatusEnum $attribute) {
@@ -74,6 +88,41 @@ $this->validate($request, [
         Rule::in(UserStatusEnum::values()),
     ],
 ]);
+```
+
+Localization:
+
+``` php
+use Nasyrov\Laravel\Enums\Enum as BaseEnum;
+
+abstract class Enum extends BaseEnum
+{
+    /**
+     * Get the enum labels.
+     *
+     * @return array
+     */
+    public static function labels()
+    {
+        return static::constants()
+            ->flip()
+            ->map(function ($key) {
+                // Place your translation strings in `resources/lang/en/enum.php`
+                return trans(sprintf('enum.%s', strtolower($key)));
+            })
+            ->all();
+    }
+}
+```
+
+``` blade
+<select name="status">
+    @foreach (UserStatusEnum::labels() as $value => $label)
+        <option value="{{ $value }}">
+            {{ $label }}
+        </option>
+    @endforeach
+</select>
 ```
 
 ## Testing
@@ -96,17 +145,17 @@ If you discover any security related issues, please email inasyrov@ya.ru instead
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/nasyrov/laravel-enum.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/nasyrov/laravel-enums.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/nasyrov/laravel-enum/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/nasyrov/laravel-enum.svg?style=flat-square
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/nasyrov/laravel-enum.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/nasyrov/laravel-enum.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/nasyrov/laravel-enums/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/nasyrov/laravel-enums.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/nasyrov/laravel-enums.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/nasyrov/laravel-enums.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/nasyrov/laravel-enum
-[link-travis]: https://travis-ci.org/nasyrov/laravel-enum
-[link-scrutinizer]: https://scrutinizer-ci.com/g/nasyrov/laravel-enum/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/nasyrov/laravel-enum
-[link-downloads]: https://packagist.org/packages/nasyrov/laravel-enum
+[link-packagist]: https://packagist.org/packages/nasyrov/laravel-enums
+[link-travis]: https://travis-ci.org/nasyrov/laravel-enums
+[link-scrutinizer]: https://scrutinizer-ci.com/g/nasyrov/laravel-enums/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/nasyrov/laravel-enums
+[link-downloads]: https://packagist.org/packages/nasyrov/laravel-enums
 [link-author]: https://github.com/nasyrov
 [link-contributors]: ../../contributors
