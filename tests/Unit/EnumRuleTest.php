@@ -44,7 +44,7 @@ class EnumRuleTest extends TestCase
 
         $this->assertEquals(
             [
-                'The enum it not a valid value for the EnumFixture'
+                'The enum is not a valid value for the Nasyrov\Laravel\Enums\Enum'
             ],
             $validator->errors()->toArray()['enum']
         );

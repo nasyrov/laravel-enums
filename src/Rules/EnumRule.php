@@ -17,7 +17,7 @@ class EnumRule implements Rule
     */
     public function __construct(string $enumClass)
     {
-        if ($this->validateEnumClass($enumClass)) {
+        if (!$this->isEnumClass($enumClass)) {
             throw new InvalidArgumentException(
                 $this->invalidEnumMessage($enumClass)
             );
@@ -48,9 +48,7 @@ class EnumRule implements Rule
      */
     public function message()
     {
-        $enumClassName = explode('\\', $this->enumClass);
-
-        return 'The :attribute it not a valid value for the ' . array_pop($enumClassName);
+        return 'The :attribute is not a valid value for the ' . Enum::class;
     }
 
     /**
@@ -60,10 +58,10 @@ class EnumRule implements Rule
      *
      * @return bool
      */
-    protected function validateEnumClass(string $enumClass): bool
+    protected function isEnumClass(string $enumClass): bool
     {
-        return !class_exists($enumClass)
-            || !(new ReflectionClass($enumClass))->isSubclassOf(Enum::class);
+        return !(!class_exists($enumClass)
+            || !(new ReflectionClass($enumClass))->isSubclassOf(Enum::class));
     }
 
     /**
