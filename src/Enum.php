@@ -7,7 +7,7 @@ use ReflectionClass;
 use UnexpectedValueException;
 use JsonSerializable;
 
-abstract class Enum implements JsonSerializable
+abstract class Enum implements \JsonSerializable
 {
     /**
      * The enum value.
