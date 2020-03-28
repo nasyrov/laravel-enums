@@ -13,6 +13,6 @@ class EnumMakeCommandTest extends TestCase
         $exitCode = Artisan::call('make:enum', ['name' => 'TestEnum']);
 
         $this->assertEquals(0, $exitCode);
-        $this->assertContains('Enum created successfully', Artisan::output());
+        $this->assertStringContainsString('Enum created successfully', Artisan::output());
     }
 }
